@@ -20,14 +20,17 @@ public class Main {
 
 //        ladaGranta.getBestLapTime(56);
 
-        DriverB<PassengerCars> gennadyTartakovsky = new DriverB<>("Геннадий Борисович Тартаковский", true, 15);
-        gennadyTartakovsky.startMovement(ladaGranta);
+        DriverB<PassengerCars> gennadyTartakovsky = new DriverB<>("Геннадий Борисович Тартаковский", true, 15);//       gennadyTartakovsky.startMovement(ladaGranta);
 
         DriverC<Trucks> olegGazmanov = new DriverC<>("Олег Михайлович Газманов", true, 27);
-        olegGazmanov.startMovement(hyundaiHD);
+//        olegGazmanov.startMovement(hyundaiHD);
 
         DriverD<Bus> valeryKipelov = new DriverD<>("Валерий Александрович Кипелов", false, 25);
-        valeryKipelov.startMovement(gazelleNext);
+//        valeryKipelov.startMovement(gazelleNext);
+
+        gazelleNext.getTypeBus("");
+        fusoCanter.getTypeTrucks("N1");
+        ladaGranta.getTypePassengerCars("SEDAN");
 
 //        Car[] cars = new Car[4];
 //        cars[0] = new Car("Lada", "Granta", 1.7, "желтый", 2015, null, 60, "", "", "", 0, "зима");
