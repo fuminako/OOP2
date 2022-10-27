@@ -3,10 +3,6 @@ package Transport;
 public abstract class Transport {
     private String brand;
     private String model;
-//    private String color;
-//    private final int productionYear;
-//    private final String productionCountry;
-//    private int maxMovementSpeed;
 
     public Transport(String brand, String model) {
         setBrand(brand);
@@ -33,6 +29,10 @@ public abstract class Transport {
         }
     }
 
+    public abstract void printType();
+
+    public abstract void passDiagnostics();
+
     public final String getModel() {
         return model;
     }
@@ -44,34 +44,4 @@ public abstract class Transport {
             this.model = model;
         }
     }
-
-//    public String getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(String color) {
-//        if ((color == null || color.isBlank())) {
-//            this.color = "белый";
-//        } else {
-//            this.color = color;
-//        }
-//    }
-//
-//    public int getProductionYear() {
-//        return productionYear;
-//    }
-//
-//    public String getProductionCountry() {
-//        return productionCountry;
-//    }
-//
-//    public int getMaxMovementSpeed() {
-//        return maxMovementSpeed;
-//    }
-//
-//    public void setMaxMovementSpeed(int maxMovementSpeed) {
-//        this.maxMovementSpeed = Math.max(maxMovementSpeed, 0);
-//    }
-//
-//    public abstract String refill();
 }
