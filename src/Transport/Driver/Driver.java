@@ -1,4 +1,4 @@
-import Transport.Car;
+package Transport.Driver;
 
 public class Driver {
     private final String FIO;

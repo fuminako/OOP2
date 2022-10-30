@@ -1,20 +1,34 @@
 package Transport;
 
+import Transport.Driver.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public abstract class Transport {
     private String brand;
     private String model;
 
+    private final List<Driver> drivers = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
     public Transport(String brand, String model) {
         setBrand(brand);
         setModel(model);
-//        setColor(color);
-//        this.productionYear = Math.max(productionYear, 2000);
-//        if ((productionCountry == null || productionCountry.isBlank())) {
-//            this.productionCountry = "Россия";
-//        } else {
-//            this.productionCountry = productionCountry;
-//        }
-//        setMaxMovementSpeed(maxMovementSpeed);
+    }
+
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
     }
 
     public final String getBrand() {
@@ -44,4 +58,16 @@ public abstract class Transport {
             this.model = model;
         }
     }
+    public void addDriver(Driver driver){
+        drivers.add(driver);
+    }
+
+    public void addSponsor(Sponsor sponsor){
+        sponsors.add(sponsor);
+    }
+
+    public void addMechanic(Mechanic<?> mechanic){
+        mechanics.add(mechanic);
+    }
+
 }

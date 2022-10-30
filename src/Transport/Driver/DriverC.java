@@ -1,7 +1,8 @@
-import Transport.Car;
-import Transport.Competing;
+package Transport.Driver;
 
-public class DriverC <C extends Car & Competing> extends Driver{
+import Transport.Car;
+
+public class DriverC <C extends Car> extends Driver {
     public DriverC(String FIO, boolean havingDriverLicense, int experience) {
         super(FIO, havingDriverLicense, experience);
     }
@@ -19,5 +20,9 @@ public class DriverC <C extends Car & Competing> extends Driver{
     public void refill(C car) {
         System.out.println("Заправить автомобиль.");
         System.out.println(car.refill());
+    }
+
+    public String toString(){
+        return getFIO();
     }
 }

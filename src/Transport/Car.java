@@ -15,6 +15,7 @@ public abstract class Car extends Transport {
         }
     }
 
+
     public final double getEngineVolume() {
         return engineVolume;
     }
@@ -25,10 +26,5 @@ public abstract class Car extends Transport {
 
     public abstract String refill();
 
-
-    @Override
-    public String toString() {
-        return "Car{" + getBrand() + " " + getModel() + "engineVolume=" + engineVolume + '}';
-    }
 
 }

@@ -1,28 +1,40 @@
 
+import Transport.Driver.DriverB;
+import Transport.Driver.DriverC;
+import Transport.Driver.DriverD;
 import Transport.*;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        Mechanic<PassengerCars> oleg = new Mechanic<PassengerCars>("Олег", "Магнит");
+        Mechanic<Car> vasily = new Mechanic<Car>("Василий", "Пятёрочка");
+        Sponsor ladoga = new Sponsor("ООО Ладога", 700599);
+        Sponsor nikiforov = new Sponsor("Никифоров Олег Дмитриевич", 75000);
+
         PassengerCars ladaGranta = new PassengerCars("Lada", "Granta", 1.7, BodyType.COUPE);
-        PassengerCars peugeot = new PassengerCars("Peugeot", "206", 1.4, BodyType.CROSSOVER);
+        ladaGranta.addDriver(new DriverB<PassengerCars>("Геннадий Борисович Тартаковский", true, 15));
+        ladaGranta.addMechanic(oleg);
+        ladaGranta.addSponsor(ladoga);
 
-        Trucks fusoCanter = new Trucks("Furso", "Canter", 4.9, LoadType.N1);
         Trucks hyundaiHD = new Trucks("Hyundai", "HD78", 3.9, LoadType.N2);
+        hyundaiHD.addDriver(new DriverC<Trucks>("Олег Михайлович Газманов", true, 27));
+        hyundaiHD.addMechanic(vasily);
+        hyundaiHD.addSponsor(ladoga);
 
-        Bus gazelleNext = new Bus("ГАЗ ГАЗель", "Next", 2.7, CapacityType.MEDIUM);
+
         Bus fordTransit = new Bus("Ford", "Transit", 2.2, CapacityType.SMALL);
+        fordTransit.addDriver(new DriverD<Bus>("Валерий Александрович Кипелов", true, 25));
+        fordTransit.addMechanic(vasily);
+        fordTransit.addSponsor(nikiforov);
 
-        DriverB<PassengerCars> gennadyTartakovsky = new DriverB<>("Геннадий Борисович Тартаковский", true, 15);
-        DriverC<Trucks> olegGazmanov = new DriverC<>("Олег Михайлович Газманов", true, 27);
-        DriverD<Bus> valeryKipelov = new DriverD<>("Валерий Александрович Кипелов", false, 25);
+        List<Transport> cars = List.of(ladaGranta, hyundaiHD, fordTransit);
 
+        printInfo(fordTransit);
+    }
 
-        try {
-            ladaGranta.passDiagnostics();
-            gazelleNext.passDiagnostics();
-        } catch (DiagnosticsException e) {
-            System.out.println("Транспортное средство не прошло диагностику: " + e.getMessage());
-        }
-
+    private static void printInfo(Car transports) {
+        System.out.println(transports.getBrand() + " " + transports.getModel() + " " + transports.getDrivers() + " " + transports.getSponsors() + " " + transports.getMechanics());
     }
 }
