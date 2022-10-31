@@ -2,32 +2,30 @@ package Transport;
 
 import Transport.Driver.Driver;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Transport {
     private String brand;
     private String model;
 
-    private final List<Driver> drivers = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Driver> drivers = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
     public Transport(String brand, String model) {
         setBrand(brand);
         setModel(model);
     }
 
-    public List<Driver> getDrivers() {
+    public Set<Driver> getDrivers() {
         return drivers;
     }
 
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
@@ -70,4 +68,21 @@ public abstract class Transport {
         mechanics.add(mechanic);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        return Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(drivers, transport.drivers) && Objects.equals(sponsors, transport.sponsors) && Objects.equals(mechanics, transport.mechanics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, drivers, sponsors, mechanics);
+    }
+
+    @Override
+    public String toString() {
+        return "Машина " + getBrand() + " " + getModel();
+    }
 }

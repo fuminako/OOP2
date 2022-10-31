@@ -1,5 +1,7 @@
 package Transport.Driver;
 
+import java.util.Objects;
+
 public class Driver {
     private final String FIO;
     private final boolean havingDriverLicense;
@@ -23,4 +25,16 @@ public class Driver {
         return Experience;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return Objects.equals(FIO, driver.FIO);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(FIO);
+    }
 }

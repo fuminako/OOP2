@@ -4,7 +4,7 @@ import Transport.Driver.DriverC;
 import Transport.Driver.DriverD;
 import Transport.*;
 
-import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +14,7 @@ public class Main {
         Sponsor nikiforov = new Sponsor("Никифоров Олег Дмитриевич", 75000);
 
         PassengerCars ladaGranta = new PassengerCars("Lada", "Granta", 1.7, BodyType.COUPE);
+        ladaGranta.addDriver(new DriverB<PassengerCars>("Геннадий Борисович Тартаковский", true, 15));
         ladaGranta.addDriver(new DriverB<PassengerCars>("Геннадий Борисович Тартаковский", true, 15));
         ladaGranta.addMechanic(oleg);
         ladaGranta.addSponsor(ladoga);
@@ -29,9 +30,9 @@ public class Main {
         fordTransit.addMechanic(vasily);
         fordTransit.addSponsor(nikiforov);
 
-        List<Transport> cars = List.of(ladaGranta, hyundaiHD, fordTransit);
+        Set<Transport> cars =Set.of(ladaGranta, hyundaiHD, fordTransit);
 
-        printInfo(fordTransit);
+        printInfo(ladaGranta);
     }
 
     private static void printInfo(Car transports) {
